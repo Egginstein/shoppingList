@@ -1,0 +1,18 @@
+[
+  {
+    "name": "商品1",
+    "description": "这是商品1",
+    "image": "images/item1.jpg"
+  },
+  {
+    "name": "商品2",
+    "description": "这是商品2",
+    "image": "images/item2.jpg"
+  },
+  {
+    "name": "商品",
+    "description": "这是商品3",
+    "image": "images/item3.jpg"
+  },
+  // ... 其他97个商品
+]

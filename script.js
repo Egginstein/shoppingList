@@ -1,10 +1,10 @@
-// 模拟商品数据
-const products = [
-    { id: 1, name: '商品1', image: 'https://via.placeholder.com/150' },
-    { id: 2, name: '商品2', image: 'https://via.placeholder.com/150' },
-    { id: 3, name: '商品3', image: 'https://via.placeholder.com/150' },
-    // 添加更多商品...
-];
+// 加载 JSON 数据
+fetch('products.json')
+  .then(response => response.json())
+  .then(products => {
+    displayProducts(products);
+  })
+  .catch(error => console.error('Error loading JSON:', error));
 
 function displayProducts() {
     const productGrid = document.getElementById('productGrid');
