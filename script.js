@@ -1,10 +1,10 @@
-// 加载 JSON 数据
-fetch('products.json')
-  .then(response => response.json())
-  .then(products => {
-    displayProducts(products);
-  })
-  .catch(error => console.error('Error loading JSON:', error));
+// 模拟商品数据
+const products = [
+    { id: 1, name: '商品1', image: 'https://timvandevall.com/wp-content/uploads/Microscope-Diagram-Labeled.jpg' },
+    { id: 2, name: '商品2', image: 'https://timvandevall.com/wp-content/uploads/Microscope-Diagram-Labeled.jpg' },
+    { id: 3, name: '商品3', image: 'https://timvandevall.com/wp-content/uploads/Microscope-Diagram-Labeled.jpg' },
+    // 添加更多商品...
+];
 
 function displayProducts() {
     const productGrid = document.getElementById('productGrid');
