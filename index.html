@@ -8,11 +8,12 @@
 </head>
 <body>
     <h1>我的购物清单</h1>
-    <div id="search">
-        <input type="text" id="searchInput" placeholder="输入商品名称">
-        <button onclick="searchItems()">搜索</button>
+    <div id="productGrid"></div>
+    <button id="generateList">生成清单</button>
+    <div id="selectedList" style="display:none;">
+        <h2>已选商品</h2>
+        <ul id="selectedItems"></ul>
     </div>
-    <div id="itemList"></div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,32 +1,39 @@
-let allItems = [];
+// 模拟商品数据
+const products = [
+    { id: 1, name: '商品1', image: 'https://via.placeholder.com/150' },
+    { id: 2, name: '商品2', image: 'https://via.placeholder.com/150' },
+    { id: 3, name: '商品3', image: 'https://via.placeholder.com/150' },
+    // 添加更多商品...
+];
 
-fetch('data.json')
-    .then(response => response.json())
-    .then(data => {
-        allItems = data;
-        displayItems(allItems);
-    });
-
-function displayItems(items) {
-    const itemList = document.getElementById('itemList');
-    itemList.innerHTML = '';
-    items.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'item';
-        itemDiv.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
-            <h2>${item.name}</h2>
-            <p>${item.description}</p>
+function displayProducts() {
+    const productGrid = document.getElementById('productGrid');
+    products.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.className = 'product';
+        productElement.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <p>${product.name}</p>
+            <input type="checkbox" id="product${product.id}" name="product" value="${product.id}">
         `;
-        itemList.appendChild(itemDiv);
+        productGrid.appendChild(productElement);
     });
 }
 
-function searchItems() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const filteredItems = allItems.filter(item => 
-        item.name.toLowerCase().includes(searchTerm) || 
-        item.description.toLowerCase().includes(searchTerm)
-    );
-    displayItems(filteredItems);
+function generateList() {
+    const selectedItems = document.querySelectorAll('input[name="product"]:checked');
+    const selectedList = document.getElementById('selectedItems');
+    selectedList.innerHTML = '';
+    selectedItems.forEach(item => {
+        const product = products.find(p => p.id == item.value);
+        const li = document.createElement('li');
+        li.textContent = product.name;
+        selectedList.appendChild(li);
+    });
+    document.getElementById('selectedList').style.display = 'block';
 }
+
+window.onload = function() {
+    displayProducts();
+    document.getElementById('generateList').addEventListener('click', generateList);
+};
