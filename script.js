@@ -1,10 +1,14 @@
-// 模拟商品数据，能正常显示
-const products = [
-    { id: 1, name: 'Item1', image: 'https://timvandevall.com/wp-content/uploads/Microscope-Diagram-Labeled.jpg' },
-    { id: 2, name: 'Item2', image: 'https://timvandevall.com/wp-content/uploads/Microscope-Diagram-Labeled.jpg' },
-    { id: 3, name: 'Item3', image: 'https://via.placeholder.com/150' },
-    // 添加更多商品...
-];
+fetch('products.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(products => {
+    displayProducts(products);  // 确保此函数已定义
+  })
+  .catch(error => console.error('Error loading JSON:', error));
 
 
 function displayProducts() {
